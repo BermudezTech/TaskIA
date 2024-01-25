@@ -10,7 +10,7 @@ interface ListBtnProps {
 function ListBtn({ emoji, name, taskCount, color }: ListBtnProps) {
     return (
         <div
-            className={`flex gap-4 items-center justify-between h-10 p-4 rounded-lg font-bold`}
+            className={`flex gap-4 items-center justify-between h-10 p-4 rounded-lg font-bold cursor-pointer hover:opacity-80`}
             style={{
                 backgroundColor: `${color || "#1E9BE1B2"}`,
                 color: contrastColor(color || "white"),

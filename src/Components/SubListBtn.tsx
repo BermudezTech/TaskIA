@@ -8,7 +8,7 @@ interface SubListBtnProps {
 function SubListBtn({ progress, name, taskCount, color }: SubListBtnProps) {
     return (
         <div
-            className="flex gap-4 items-center justify-between h-6 p-4 rounded-lg font-bold"
+            className="flex gap-4 items-center justify-between h-6 p-4 rounded-lg font-bold cursor-pointer hover:opacity-80"
             style={{ color: `${color || "#1E9BE1B2"}` }}
         >
             <div className="flex gap-4 items-center">
