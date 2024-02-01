@@ -30,7 +30,7 @@ export default function RootLayout({
                         {/* MAIN MENU */}
                         <div className="flex flex-col gap-4 ">
                             <NavBtn name="Inicio" icon="home" path="/" />
-                            <NavBtn name="Inbox" icon="inbox" />
+                            <NavBtn name="Inbox" icon="inbox" path="/inbox" />
                             <NavBtn name="Hoy" icon="calendar" path="/today" />
                             <NavBtn name="Proximamente" icon="calendarNext" />
                             <NavBtn
