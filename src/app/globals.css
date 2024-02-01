@@ -33,3 +33,10 @@ body aside {
 main {
     padding: 3rem;
 }
+
+input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #a9a9a9;
+    padding: 0 1rem;
+}

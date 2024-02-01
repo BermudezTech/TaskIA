@@ -6,6 +6,9 @@ import ListBtn from "@/Components/ListBtn";
 import NavBtn from "@/Components/NavBtn";
 import SubListBtn from "@/Components/SubListBtn";
 import Icon from "@/Components/Icon";
+import Modal from "@/Components/Modal";
+import ModalWindows from "@/Components/ModalWindows";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -69,12 +72,14 @@ export default function RootLayout({
                                 color="#1EE1D6B2"
                             />
                         </div>
-                        <p className="flex items-center justify-center gap-2 text-sm text-center text-gray-400">
-                            <Icon name="plus" size={24} />
-                            Nueva lista
-                        </p>
+                        <Link href="/newList">
+                            <p className="flex items-center justify-center gap-2 text-sm text-center text-gray-400 cursor-pointer hover:opacity-80">
+                                <Icon name="plus" size={24} />
+                                Nueva lista
+                            </p>
+                        </Link>
                     </aside>
-                    <main>{children}</main>
+                    <main className="overflow-y-auto h-screen">{children}</main>
                 </div>
             </body>
         </html>
