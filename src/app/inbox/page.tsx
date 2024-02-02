@@ -1,9 +1,22 @@
 "use client";
 import Title from "@/Components/Title";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import moment from "moment-timezone";
 
 function Inbox() {
+    // Set the time zone to "America/Bogota"
+    let currentDate = moment().tz("America/Bogota");
+
+    // Add one day
+    currentDate.add(1, "days");
+
+    // Format the date as YYYY-MM-DD
+    let formattedDate = currentDate.format("YYYY-MM-DD");
+
     let [IACreate, setIACreate] = useState<boolean>(false);
+    let [includeTime, setIncludeTime] = useState<boolean>(false);
+    let [date, setDate] = useState<string>(formattedDate);
+
     return (
         <div>
             <Title name="Nueva tarea" icon="inbox" />
@@ -56,6 +69,31 @@ function Inbox() {
                         <option value="study">Estudio</option>
                         <option value="personal">Personal</option>
                     </select>
+                    <label htmlFor="date">Fecha de vencimiento:</label>
+                    <div className="flex gap-2 items-center">
+                        <label>¿Incluir hora?</label>
+                        <input
+                            type="checkbox"
+                            name="time"
+                            onChange={() => {
+                                setDate(
+                                    includeTime
+                                        ? date.split("T")[0]
+                                        : `${date}T00:00`
+                                );
+                                setIncludeTime(!includeTime);
+                            }}
+                            checked={includeTime}
+                        />
+                    </div>
+                    <input
+                        type={includeTime ? "datetime-local" : "date"}
+                        name="date"
+                        onChange={(e) => {
+                            setDate(e.target.value);
+                        }}
+                        value={date}
+                    />
                     <button
                         type="submit"
                         className="btn w-full mt-4 p-2 rounded bg-green-500 text-white hover:bg-green-600"
@@ -63,6 +101,22 @@ function Inbox() {
                         Crear
                     </button>
                 </form>
+            )}
+            {IACreate && (
+                <div>
+                    <label>Escribe tu tarea:</label>
+                    <textarea
+                        name="IAbox"
+                        className="w-full h-40 border-2 border-solid border-gray-300 p-2 rounded-lg resize-none"
+                        placeholder="Escribe tu tarea de forma sencilla especificando la fecha y posiblemente la lista a la que pertenece... &#10;EJEMPLO: Preparar la presentación de inteligencia artificial del trabajo para el lunes a las 2 de la tarde"
+                    />
+                    <button
+                        type="submit"
+                        className="btn w-full mt-4 p-2 rounded bg-green-500 text-white hover:bg-green-600"
+                    >
+                        Crear
+                    </button>
+                </div>
             )}
         </div>
     );
