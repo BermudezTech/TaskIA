@@ -1,5 +1,6 @@
 import getContrastColor from "@/utils/contrastColor";
 import Icon from "./Icon";
+import Menu from "./Menu";
 
 interface Category {
     name: string;
@@ -85,7 +86,7 @@ function Task({
                         {subList}
                     </p>
                 </div>
-                <Icon name="threeDots" size={32} />
+                <Menu />
             </div>
         </div>
     );
